@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+            background-color: beige;
+        }
+        #search{
+            margin-bottom: 100px;
+        }
+        #email{
+            padding:10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="search">
+        <input type="email" name="" id="email">
+        <button type="submit" id="submit-button">Submit</button>
+    </div>
+    <div id="display"></div>
+
+
+    <script>
+        
+       
+    document.getElementById('submit-button').addEventListener('click',()=>
+{
+    const emailInput = document.getElementById("email");
+    const email = emailInput.value;
+    emailInput.value ='';
+
+    const  validateEmail=()=> 
+    { 
+    const re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    return re.test(email);
+    }
+    if(validateEmail()===true){
+        const display = document.getElementById('display');
+        display.innerText=`${email} is a valid email`;
+        display.style.color='green';
+        // document.getElementById('display').innerText=`${email} is right`;
+    }
+    else{
+        // document.getElementById('display').innerText=`${email} is wrong`;
+        const display = document.getElementById('display');
+        display.innerText=`${email} is an unvalid email`;
+        display.style.color='red';
+    }
+}
+);
+        
+
+    </script>
+    
+    
+</body>
+</html>
